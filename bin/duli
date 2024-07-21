@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Define the blacklist array with regex patterns
+blacklist=("^#" "if" "else" "while" "done" "fi" "}" "}," "{" "continue" "exit 1") # Adding "^#" to ignore lines starting with #
+
+# Function to trim whitespace
+trim_whitespace() {
+    echo "$1" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//'
+}
+
+# Function to check if a line matches any regex pattern in the blacklist
+is_blacklisted() {
+    local line="$1"
+    for pattern in "${blacklist[@]}"; do
+        # echo "Pattern: $pattern"
+        # echo "Line: $line"
+        # echo "Match: ${line=~ $pattern}"
+        if [[ "$line" == "$pattern" ]]; then
+            return 0
+        fi
+    done
+    return 1
+}
+
+dump_associative_array() {
+    local -n array=$1
+    for key in "${!array[@]}"; do
+        echo "$key: ${array[$key]}"
+    done
+}
+
+# Check if a file path is provided
+if [ -z "$1" ]; then
+    echo "Usage: $0 <file_path>"
+    exit 1
+fi
+
+file_path="$1"
+
+# Check if the file exists
+if [ ! -f "$file_path" ]; then
+    echo "File not found!"
+    exit 1
+fi
+
+# Declare an associative array to keep track of line counts
+declare -A line_counts=()
+
+# Read the file line by line
+while IFS= read -r line; do
+    # Trim leading and trailing whitespace from the line
+    trimmed_line=$(trim_whitespace "$line")
+
+    # Skip empty lines
+    if [[ -z "$trimmed_line" ]]; then
+        continue
+    fi
+
+    # Skip blacklisted lines
+    if is_blacklisted "$trimmed_line"; then
+        echo "Skipping blacklisted line: $trimmed_line"
+        continue
+    fi
+
+    # Increment the line count
+    line_counts["$trimmed_line"]=$((line_counts["$trimmed_line"] + 1))
+
+    # dump_associative_array line_counts
+
+done <"$file_path"
+# dump_associative_array line_counts
+# Print duplicate lines
+echo "Duplicate lines:"
+for line in "${!line_counts[@]}"; do
+    if ((line_counts["$line"] > 1)); then
+        echo "-> ${line_counts[$line]} of $line"
+    fi
+done

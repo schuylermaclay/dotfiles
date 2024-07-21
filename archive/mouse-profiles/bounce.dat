@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<obprofiles xmlns="http://www.logitech.com/Cassandra/2013.1/OnboardProfile">
+  <profile name="bounce">
+    <device model="Logitech.Gaming.Mouse.G700" powermode="1" reportrate="500" buttoncount="13" anglesnapping="0">
+      <dpitable defaultindex="3" currentindex="3">
+        <dpi x="400" y="400"/>
+        <dpi x="800" y="800"/>
+        <dpi x="1250" y="1250"/>
+        <dpi x="2000" y="2000"/>
+        <dpi x="2600" y="2600"/>
+      </dpitable>
+    </device>
+    <buttons>
+      <button name="Left Click" number="1">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="leftclick"/>
+        </mousefunction>
+      </button>
+      <button name="Right Click" number="2">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="rightclick"/>
+        </mousefunction>
+      </button>
+      <button name="Middle Click" number="3">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="middleclick"/>
+        </mousefunction>
+      </button>
+      <button name="Left Cmd + [" number="4">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="LBRACKET"/>
+          <modifier value="LGUI"/>
+        </keystroke>
+      </button>
+      <button name="Left Cmd + ]" number="5">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="RBRACKET"/>
+          <modifier value="LGUI"/>
+        </keystroke>
+      </button>
+      <button name="Left Cmd + W" number="6">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="W"/>
+          <modifier value="LGUI"/>
+        </keystroke>
+      </button>
+      <button name="openDevMax" number="7">
+        <multikey xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MultiKey">
+          <key value="LSHIFT" direction="down"/>
+          <key value="LGUI" direction="down"/>
+          <key value="N" direction="down"/>
+          <key value="N" direction="up"/>
+          <key value="LGUI" direction="up"/>
+          <key value="LSHIFT" direction="up"/>
+          <key value="LALT" direction="down"/>
+          <key value="LCTRL" direction="down"/>
+          <key value="LGUI" direction="down"/>
+          <key value="M" direction="down"/>
+          <key value="M" direction="up"/>
+          <key value="LCTRL" direction="up"/>
+          <key value="LGUI" direction="up"/>
+          <key value="LALT" direction="up"/>
+          <key value="LALT" direction="down"/>
+          <key value="LGUI" direction="down"/>
+          <key value="I" direction="down"/>
+          <key value="I" direction="up"/>
+          <key value="LGUI" direction="up"/>
+          <key value="LALT" direction="up"/>
+          <key value="LGUI" direction="down"/>
+          <key value="L" direction="down"/>
+          <key value="L" direction="up"/>
+          <key value="LGUI" direction="up"/>
+          <key value="LGUI" direction="down"/>
+          <key value="V" direction="down"/>
+          <key value="V" direction="up"/>
+          <key value="LGUI" direction="up"/>
+          <key value="ENTER" direction="down"/>
+          <key value="ENTER" direction="up"/>
+        </multikey>
+      </button>
+      <button name="Shift + Left Cmd + \" number="8">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="BACKSLASH"/>
+          <modifier value="LSHIFT"/>
+          <modifier value="LGUI"/>
+        </keystroke>
+      </button>
+      <button name="DPI Down" number="9">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpidown"/>
+        </mousefunction>
+      </button>
+      <button name="DPI Up" number="10">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpiup"/>
+        </mousefunction>
+      </button>
+      <button name="DPI Cycling" number="11">
+        <mousefunction xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/MouseFunction">
+          <do task="dpicycling"/>
+        </mousefunction>
+      </button>
+      <button name="Ctrl + Shift + [" number="12">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="LBRACKET"/>
+          <modifier value="LCTRL"/>
+          <modifier value="LSHIFT"/>
+        </keystroke>
+      </button>
+      <button name="Ctrl + Shift + ]" number="13">
+        <keystroke xmlns="http://www.logitech.com/Cassandra/2010.1/Macros/Keystroke">
+          <key value="RBRACKET"/>
+          <modifier value="LCTRL"/>
+          <modifier value="LSHIFT"/>
+        </keystroke>
+      </button>
+    </buttons>
+  </profile>
+</obprofiles>

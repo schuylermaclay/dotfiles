@@ -1,0 +1,65 @@
+[user]
+  name = SchuylerMaclay
+  email = schuylermaclay@gmail.com
+[github]
+  user = SchuylerMaclay
+  email = schuylermaclay@gmail.com
+[core]
+  pager = delta
+  editor = nvim
+  # Treat spaces before tabs and all kinds of trailing whitespace as an error.
+  whitespace = fix,space-before-tab,-indent-with-non-tab,trailing-space,cr-at-eol
+  excludesfile = ~/.gitignore
+	# Make `git rebase` safer on macOS.
+	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
+  trustctime = false
+	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
+	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
+  precomposeunicode = false
+	# Speed up commands involving untracked files such as `git status`.
+	# https://git-scm.com/docs/git-update-index#_untracked_cache
+  untrackedCache = true
+[diff]
+  tool = default-difftool
+  algorithm = histogram
+[difftool "default-difftool"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  conflictstyle = diff3
+[mergetool "code"]
+  cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true    # use n and N to move between diff sections
+[diff]
+  colorMoved = default
+[branch]
+	# Show most recently changed branches first.
+  sort = -committerdate
+  autosetupmerge = true
+[alias]
+  br = branch
+  co = checkout
+  df = diff
+  lg = log -p
+  who = shortlog -s --
+  pr = pull --rebase
+[color]
+  ui = true
+[push]
+  autoSetupRemote = true
+  # default = upstream
+[rebase]
+  autostash = true
+[init]
+  defaultBranch = main
+[fetch]
+  prune = true
+[pull]
+  rebase = false
+  # default = current
+[ghq]
+  # order matters  
+  root = ~/go/src
+  root = ~/repos

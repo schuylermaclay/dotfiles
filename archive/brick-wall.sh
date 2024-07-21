@@ -1,0 +1,1 @@
+clear && tput setaf 1 && seq -ws "___|" 93|fold -69|tr "0-9" "_" && tput cup 3 15 && tput rev && echo "llaw kcirb a tsniaga daeh ruoy nur t'noD "|rev && tput setab 0 && tput cup 8

@@ -1,0 +1,80 @@
+npm-debug.log
+.idea
+.vscode/
+phpstorm.php
+.vscode
+
+test.md
+zz-bash-template.sh
+zz-scratch
+fish_variables
+# don't care if pkg versions are the same across machines
+Brewfile**lock.json
+
+lazy-lock.json
+
+# vim #
+###################
+vim/autoload/**
+vim/autoload/plug.vim
+vim/plugged/
+vim/plugged
+.vim/plugged/**
+viminfo
+viminfo.*
+
+# swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+.swap
+
+# session
+Session.vim
+# temporary
+.netrwhist
+# *~
+# auto-generated tag files
+tags
+
+# secrets #
+###################
+service.json
+.env
+
+# compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Packages #
+############
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+# *.log
+# *.sql
+# *.sqlite
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+# ._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

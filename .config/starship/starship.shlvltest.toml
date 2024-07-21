@@ -1,0 +1,53 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Prompt format
+format = """
+$directory\
+$fill\
+$gcloud\
+$shlvl\
+$cmd_duration
+$character
+"""
+
+# primary keys
+continuation_prompt = '▶▶ '
+add_newline = true
+command_timeout = 2000
+
+# spaces for bizarre left truncation
+[directory]
+read_only = " 󰌾"
+fish_style_pwd_dir_length = 3
+truncation_length = 3
+truncate_to_repo = false
+use_logical_path = false
+truncation_symbol = "xxx"
+repo_root_format = 'GIT:[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)'
+style = "italic blue"
+format = 'this is fine [$path]($style)[$read_only]($read_only_style) '
+
+[fill]
+symbol = "-"
+style = "yellow"
+disabled = false
+
+[shlvl]
+disabled = false
+format = '[$symbol]($style) '
+threshold = 1
+repeat = true
+
+[cmd_duration]
+min_time = 0
+show_milliseconds = true
+show_notifications = true
+min_time_to_notify = 45_000
+format = " [$duration ](italic bright-yellow)"
+
+# the actual prompt
+[character]
+format = "$symbol "
+success_symbol = '[󰜴](bold green) '
+error_symbol = '[󰜴](bold red) '

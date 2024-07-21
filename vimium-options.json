@@ -1,0 +1,30 @@
+{
+    "keyMappings": "# Insert your preferred key mappings here.\n# unmap  gF\n# map gF LinkHints.activateModeWithQueue",
+    "linkHintCharacters": "sadfjklewcmpghrtuion",
+    "newTabUrl": "pages/blank.html",
+    "scrollStepSize": 200,
+    "grabBackFocus": true,
+    "settingsVersion": "2.1.2",
+    "exclusionRules": [
+        {
+            "passKeys": "gijk?z/conp`~v,ae",
+            "pattern": "https?://mail.google.com/*"
+        },
+        {
+            "passKeys": "",
+            "pattern": "https?://remotedesktop.google.com/*"
+        },
+        {
+            "passKeys": "",
+            "pattern": "https?://remotedesktop.google.com/*"
+        },
+        {
+            "passKeys": "",
+            "pattern": "https?://learn.svelte.dev/*"
+        },
+        {
+            "passKeys": "",
+            "pattern": "https?://docs.google.com/*"
+        }
+    ]
+}

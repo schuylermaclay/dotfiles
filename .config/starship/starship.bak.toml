@@ -1,0 +1,420 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Prompt format
+format = """
+$hostname\
+$env_var\
+$username\
+$sudo\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$fill\
+$localip\
+$singularity\
+$kubernetes\
+$vcsh\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$crystal\
+$custom\
+$jobs\
+$status\
+$os\
+$container\
+$battery\
+$time\
+$shell\
+$cmd_duration
+$character
+"""
+
+# primary keys
+continuation_prompt = '▶▶ '
+add_newline = true
+command_timeout = 2000
+
+# left prompt
+[hostname]
+ssh_symbol = " "
+disabled = true
+
+# why is this here?
+[env_var.VIMSHELL] # vim subshell
+format = " [$env_value]($style)"
+style = 'green italic'
+disabled = true
+
+[username]
+style_user = "yellow bold"
+style_root = "purple bold italic"
+format = " [$user]($style) ▻ "
+disabled = true
+
+[sudo]
+format = " [$symbol]($style)"
+style = "italic bright-purple"
+symbol = "◇┈"
+disabled = true
+
+# spaces for bizarre left truncation
+[directory]
+read_only = " 󰌾"
+fish_style_pwd_dir_length = 3
+truncation_length = 3
+truncate_to_repo = false
+use_logical_path = false
+truncation_symbol = "xxx"
+repo_root_format = 'GIT:[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style)'
+style = "italic blue"
+format = '[$path]($style)[$read_only]($read_only_style) '
+
+[git_branch]
+symbol = " "
+format = " [ $symbol $branch(:$remote_branch)]($style)"
+style = "bold italic white"
+
+
+[git_status]
+style = "italic bright-blue"
+format = """([⎪$ahead_behind$staged$modified$untracked$renamed$deleted$conflicted$stashed⎥]($style))"""
+conflicted = "[◪◦](italic bright-magenta)"
+ahead = "[▲│[${count}](bold white)│](italic green)"
+behind = "[▽│[${count}](bold white)│](italic red)"
+diverged = "[◇ ▲┤[${ahead_count}](regular white)│▽┤[${behind_count}](regular white)│](italic bright-magenta)"
+untracked = "[◌◦](italic bright-yellow)"
+stashed = "[◦◫◦](italic white)"
+modified = "[●◦](italic yellow)"
+staged = "[■┤[$count](bold white)│](italic bright-cyan)"
+renamed = "[◎◦](italic bright-blue)"
+deleted = "[✕](italic red)"
+
+
+# right prompt
+[kotlin]
+symbol = " "
+
+[elixir]
+symbol = " "
+format = " exs [$symbol $version OTP $otp_version ]($style)"
+
+[golang]
+symbol = " "
+format = " go [$symbol($version )]($style)"
+
+[haskell]
+symbol = " "
+format = " hs [$symbol($version )]($style)"
+
+[time]
+disabled = false
+format = " [ $time]($style)"
+time_format = "%R"
+utc_time_offset = "local"
+style = "dimmed white"
+
+[shlvl]
+disabled = true
+format = '[$symbol]($style) '
+threshold = 1
+repeat = true
+
+[[battery.display]]
+threshold = 40
+style = "dimmed yellow"
+
+[[battery.display]]
+threshold = 70
+style = "dimmed white"
+
+[perl]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[ocaml]
+symbol = " "
+
+[swift]
+symbol = " "
+format = " sw [${symbol}${version}]($style)"
+style = "italic bright-red"
+version_format = "${major}.${minor}"
+
+[deno]
+format = " deno [∫ $version](blue italic)"
+version_format = "${major}.${minor}"
+
+[c]
+symbol = " "
+format = " c [$symbol($version(-$name))]($style)"
+
+[dart]
+symbol = " "
+format = " dart [$symbol($version )]($style)"
+
+[julia]
+symbol = " "
+format = " jl [$symbol($version )]($style)"
+
+[package]
+symbol = "󰏗 "
+format = " pkg [$symbol$version]($style)"
+version_format = "${major}.${minor}"
+style = "bright-yellow italic"
+
+[localip]
+ssh_only = false
+format = " ◯ [$localipv4](magenta)"
+disabled = false
+
+[elm]
+symbol = "◩ "
+format = " elm [$symbol($version )]($style)"
+
+[guix_shell]
+symbol = " "
+
+[buf]
+symbol = " "
+format = " buf [$symbol $version $buf_version]($style)"
+
+[nim]
+symbol = "󰆥 "
+format = " nim [$symbol($version )]($style)"
+
+[cmd_duration]
+min_time = 0
+show_milliseconds = true
+show_notifications = true
+min_time_to_notify = 45_000
+format = " [$duration ](italic bright-yellow)"
+
+[spack]
+symbol = "◇ "
+format = " spack [$symbol$environment]($style)"
+
+[rust]
+symbol = " "
+format = " rs [$symbol$version]($style)"
+version_format = "${major}.${minor}"
+style = "italic red"
+
+[memory_usage]
+symbol = "󰍛 "
+format = " mem [${ram}( ${swap})]($style)"
+
+[nix_shell]
+symbol = " "
+format = " nix [$symbol$state $name]($style)"
+
+[nodejs]
+symbol = " "
+format = " [$symbol ($version)](italic bright-green)"
+detect_files = ["package-lock.json", "yarn.lock"]
+version_format = "${major}.${minor}"
+
+[ruby]
+symbol = " "
+format = " rb [${symbol}${version}]($style)"
+version_format = "${major}.${minor}"
+style = "italic red"
+
+[rlang]
+symbol = "󰟔 "
+
+[jobs]
+format = " [ $symbol$number]($style)"
+style = "white"
+symbol = "[▶ ](blue italic)"
+
+[java]
+symbol = " "
+format = " java [${symbol}(${version} )]($style)"
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "
+
+[meson]
+symbol = "󰔷 "
+
+[lua]
+symbol = " "
+format = " lua [${symbol}${version}]($style)"
+style = "italic bright-yellow"
+
+[python]
+symbol = " "
+format = " py [${symbol}${version}]($style)"
+version_format = "${major}.${minor}"
+style = "italic bright-yellow"
+
+[scala]
+symbol = " "
+
+[line_break]
+disabled = true
+
+[status]
+style = 'bg:blue'
+symbol = '🔴 '
+success_symbol = '🟢 SUCCESS'
+format = ' [\[$int$common_meaning$signal_name$maybe_int\]]($style) '
+map_symbol = false
+disabled = false
+
+[crystal]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[aws]
+symbol = " "
+format = ' [$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
+style = "italic blue"
+force_display = true
+[aws.profile_aliases]
+nb = 'nb'
+
+[docker_context]
+symbol = " "
+format = " docker [$symbol$context]($style)"
+
+[battery]
+format = " [ $percentage $symbol]($style)"
+full_symbol = "[█](italic green)"
+charging_symbol = "[↑](italic green)"
+discharging_symbol = "[↓](italic)"
+unknown_symbol = "[░](italic)"
+empty_symbol = "[▃](italic red)"
+
+[php]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[fill]
+symbol = "-"
+style = "yellow"
+disabled = false
+
+
+[shell]
+fish_indicator = ''
+bash_indicator = ''
+zsh_indicator = 'z'
+unknown_indicator = ''
+format = " [$indicator $name]($style) "
+style = 'cyan bold'
+disabled = false
+
+# the actual prompt
+[character]
+format = "$symbol "
+success_symbol = '[󰜴](bold green) '
+error_symbol = '[󰜴](bold red) '
